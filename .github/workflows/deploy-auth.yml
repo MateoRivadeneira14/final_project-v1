@@ -3,7 +3,7 @@ name: Deploy Auth Domain to EC2
 on:
   push:
     branches:
-      - test
+      - test-dockerizado
 
 jobs:
   build-and-push:
