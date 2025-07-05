@@ -9,7 +9,7 @@ export default function VerUsuariosPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3001/api/usuarios", {
+    axios.get("http://54.225.176.170:3001/api/usuarios", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setItems(res.data))

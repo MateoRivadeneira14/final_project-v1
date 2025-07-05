@@ -7,7 +7,7 @@ export default function EmpresaDashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3005/api/validate", {
+    axios.get("http://54.225.176.170:3005/api/validate", {
       headers: { Authorization: `Bearer ${{ token }}` }
     }).then(res => setUser(res.data)).catch(console.error);
   }, []);

@@ -7,8 +7,8 @@ export default function CoordinadorDashboard() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3005/api/validate-token", {
-      headers: { Authorization: `Bearer ${{token}}` }
+    axios.get("http://54.225.176.170:3005/api/validate-token", {
+      headers: { Authorization: `Bearer ${{ token }}` }
     }).then(res => setUser(res.data)).catch(console.error);
   }, []);
 

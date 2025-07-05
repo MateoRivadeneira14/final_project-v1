@@ -9,7 +9,7 @@ export default function VerUniversidadesPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3001/api/universidades", {
+    axios.get("http://54.225.176.170:3001/api/universidades", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setItems(res.data))

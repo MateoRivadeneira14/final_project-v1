@@ -25,7 +25,7 @@ export default function CrearCoordinadorPage() {
     setError('');
 
     try {
-      const res = await axios.post('http://localhost:3001/api/register/coordinador', formData);
+      const res = await axios.post('http://54.225.176.170:3001/api/register/coordinador', formData);
       if (res.data && res.data.message) {
         setMensaje(res.data.message);
         setFormData({ nickname: '', email: '', password: '' });
