@@ -53,6 +53,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+      - name: Ensure /home/ubuntu/auth exists
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.EC2_AUTH_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_AUTH_SSH_KEY }}
+          script: |
+            mkdir -p /home/ubuntu/auth
+
       - name: Copy docker-compose.yml to EC2
         uses: appleboy/scp-action@v0.1.7
         with:
