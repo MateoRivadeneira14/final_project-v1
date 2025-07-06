@@ -40,6 +40,8 @@ DEPENDENCIES
   pg
   sinatra
   sinatra-contrib
+  rackup
+  puma
 
 BUNDLED WITH
    2.6.9

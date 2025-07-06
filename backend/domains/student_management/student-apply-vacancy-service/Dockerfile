@@ -1,23 +1,14 @@
-# Use Golang official image
-FROM golang:1.20
-
-# Set working directory
+# Stage 1: Build
+FROM golang:1.21-alpine AS builder
+RUN apk update && apk add --no-cache git
 WORKDIR /app
-
-# Copy go.mod and go.sum files
 COPY go.mod go.sum ./
-
-# Download dependencies
 RUN go mod download
-
-# Copy the entire project
 COPY . .
-
-# Build the binary
-RUN go build -o main ./cmd/main.go
-
-# Expose port
+RUN go build -o main ./cmd
+FROM alpine:latest
+WORKDIR /app
+COPY --from=builder /app/main .
+COPY .env ./
 EXPOSE 3020
-
-# Start the service
 CMD ["./main"]
