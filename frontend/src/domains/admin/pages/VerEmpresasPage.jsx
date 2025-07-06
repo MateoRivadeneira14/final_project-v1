@@ -7,7 +7,7 @@ export default function VerEmpresasPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3017/api/entities/list/empresa", {
+    axios.get("http://52.201.142.137:3017/api/entities/list/empresa", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setItems(res.data))

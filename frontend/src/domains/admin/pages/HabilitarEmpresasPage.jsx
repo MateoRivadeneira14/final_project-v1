@@ -10,7 +10,7 @@ export default function HabilitarEmpresasPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3017/api/entities/empresas/pendientes", {
+    axios.get("http://52.201.142.137:3017/api/entities/empresas/pendientes", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setEmpresas(res.data))
@@ -25,7 +25,7 @@ export default function HabilitarEmpresasPage() {
   const habilitarEmpresa = async (empresaId) => {
     const token = localStorage.getItem("token");
     try {
-      await axios.put(`http://localhost:3009/api/companies/${empresaId}/enable`, {}, {
+      await axios.put(`http://52.201.142.137:3009/api/companies/${empresaId}/enable`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

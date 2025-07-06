@@ -7,7 +7,7 @@ export default function VerCarrerasPage() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3018/api/universities/list/carrera", {
+    axios.get("http://52.201.142.137:3018/api/universities/list/carrera", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => setItems(res.data))

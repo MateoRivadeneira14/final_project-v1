@@ -35,7 +35,7 @@ export default function RoleBasedSidebar() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:3005/api/validate", {
+      .get("http://54.225.176.170:3005/api/validate", {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => setUser(res.data))

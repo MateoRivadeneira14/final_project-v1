@@ -10,7 +10,7 @@ export default function RoleProtectedRoute({ children, allowedRoles }) {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const token = storedUser?.token || localStorage.getItem("token");
 
-    axios.get("http://localhost:3005/api/validate", {
+    axios.get("http://54.225.176.170:3005/api/validate", {
       headers: { Authorization: `Bearer ${token}` }
     }).then(res => {
       setUser(res.data);

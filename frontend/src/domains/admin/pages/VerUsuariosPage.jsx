@@ -21,7 +21,7 @@ export default function VerUsuariosPage() {
 
   const fetchUsuarios = () => {
     const token = localStorage.getItem("token");
-    axios.get("http://localhost:3016/api/users/list", {
+    axios.get("http://52.201.142.137:3016/api/users/list", {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then(res => {
@@ -78,7 +78,7 @@ export default function VerUsuariosPage() {
       const token = localStorage.getItem("token");
 
       // Update nickname & email
-      await axios.put(`http://localhost:3012/api/users/${selectedUser.id}`, {
+      await axios.put(`http://52.201.142.137:3012/api/users/${selectedUser.id}`, {
         nickname: formData.nickname,
         email: formData.email
       }, {
@@ -87,7 +87,7 @@ export default function VerUsuariosPage() {
 
       // Assign role
       if (formData.role !== selectedUser.role?.name) {
-        await axios.put(`http://localhost:3014/api/users/${selectedUser.id}/assign-role`, {
+        await axios.put(`http://52.201.142.137:3014/api/users/${selectedUser.id}/assign-role`, {
           newRole: formData.role
         }, {
           headers: { Authorization: `Bearer ${token}` }
@@ -95,24 +95,24 @@ export default function VerUsuariosPage() {
       }
 
       // Enable or disable
-      await axios.put(`http://localhost:3015/api/users/${selectedUser.id}/${formData.isActive ? "enable" : "disable"}`, {}, {
+      await axios.put(`http://52.201.142.137:3015/api/users/${selectedUser.id}/${formData.isActive ? "enable" : "disable"}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
 
       fetchUsuarios();
       closeModal();
-      toast.success("✅ Usuario actualizado correctamente", { autoClose: 3000 });
+      toast.success("Usuario actualizado correctamente", { autoClose: 3000 });
       setSearchTerm("");
     } catch (error) {
       console.error("Error al guardar cambios:", error);
-      toast.error("❌ Error al actualizar usuario", { autoClose: 3000 });
+      toast.error("Error al actualizar usuario", { autoClose: 3000 });
     }
   };
 
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`http://localhost:3013/api/users/${selectedUser.id}`, {
+      await axios.delete(`http://52.201.142.137:3013/api/users/${selectedUser.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

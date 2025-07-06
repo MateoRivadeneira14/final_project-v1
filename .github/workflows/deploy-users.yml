@@ -21,20 +21,35 @@ jobs:
 
       - name: Build and push user services
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/user-create-service ./backend/domains/users/user-create-service
-          docker push ${{ secrets.DOCKER_USERNAME }}/user-create-service
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/enable-company-service ./backend/domains/users/enable-company-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/enable-company-service
 
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/user-get-profile-service ./backend/domains/users/user-get-profile-service
-          docker push ${{ secrets.DOCKER_USERNAME }}/user-get-profile-service
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/create-service ./backend/domains/users/create-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/create-service
 
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/user-update-service ./backend/domains/users/user-update-service
-          docker push ${{ secrets.DOCKER_USERNAME }}/user-update-service
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/get-service ./backend/domains/users/get-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/get-service
 
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/user-delete-service ./backend/domains/users/user-delete-service
-          docker push ${{ secrets.DOCKER_USERNAME }}/user-delete-service
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/update-service ./backend/domains/users/update-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/update-service
 
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/user-get-all-service ./backend/domains/users/user-get-all-service
-          docker push ${{ secrets.DOCKER_USERNAME }}/user-get-all-service
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/delete-service ./backend/domains/users/delete-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/delete-service
+
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/assign-role-service ./backend/domains/users/assign-role-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/assign-role-service
+
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/enable-disable-service ./backend/domains/users/enable-disable-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/enable-disable-service
+
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/list-user-service ./backend/domains/users/list-user-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/list-user-service
+
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/list-entity-service ./backend/domains/users/list-entity-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/list-entity-service
+
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/list-university-service ./backend/domains/users/list-university-service
+          docker push ${{ secrets.DOCKER_USERNAME }}/list-university-service
 
   deploy:
     needs: build-and-push

@@ -31,7 +31,7 @@ export default function CrearCoordinadorPage() {
       }
 
       const res = await axios.post(
-        'http://localhost:3010/api/create/coordinador',
+        'http://52.201.142.137:3010/api/create/coordinador',
         { ...formData, role: 'coordinador' },
         {
           headers: {

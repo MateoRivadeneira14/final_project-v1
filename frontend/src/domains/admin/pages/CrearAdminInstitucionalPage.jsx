@@ -32,7 +32,7 @@ export default function CrearAdminInstitucionalPage() {
       }
 
       const res = await axios.post(
-        'http://localhost:3010/api/create/admin_institucional',
+        'http://52.201.142.137:3010/api/create/admin_institucional',
         { ...formData, role: 'admin_institucional' },
         {
           headers: {
