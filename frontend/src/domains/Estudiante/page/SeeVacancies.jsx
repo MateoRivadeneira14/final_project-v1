@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Layout from "../../../layouts/Layout";
 import { useAuth } from "../../../context/AuthContext";
-import { toast } from "react-toastify"; // ✅ IMPORTANTE
+import { toast } from "react-toastify";
 
 export default function SeeVacancies() {
   const { user, updateProfile } = useAuth();
@@ -11,6 +11,7 @@ export default function SeeVacancies() {
   const { nick } = useParams();
   const [vacantes, setVacantes] = useState([]);
   const [filtroCarrera, setFiltroCarrera] = useState("");
+  const errorShownRef = useRef(false); // para evitar mostrar error dos veces
 
   useEffect(() => {
     if (!user) {
@@ -29,7 +30,10 @@ export default function SeeVacancies() {
         setVacantes(response.data);
       } catch (error) {
         console.error("Error al obtener vacantes:", error);
-        toast.error("Error al cargar las vacantes");
+        if (!errorShownRef.current) {
+          toast.error("Error al cargar las vacantes");
+          errorShownRef.current = true;
+        }
       }
     };
 
@@ -93,6 +97,15 @@ export default function SeeVacancies() {
                 <div key={vacante.id} className="border p-4 rounded shadow">
                   <h2 className="text-xl font-bold">{vacante.titulo}</h2>
                   <p className="text-sm text-gray-700">{vacante.descripcion}</p>
+                  <p className="mt-1 text-sm">
+                    <strong>Modalidad:</strong> {vacante.modalidad}
+                  </p>
+                  <p className="text-sm">
+                    <strong>Ubicación:</strong> {vacante.ubicacion}
+                  </p>
+                  <p className="text-sm">
+                    <strong>Estado:</strong> {vacante.estado}
+                  </p>
                   <p className="mt-2 text-sm">
                     <strong>Habilidades:</strong> {(vacante.habilidades || []).join(", ")}
                   </p>
@@ -114,6 +127,8 @@ export default function SeeVacancies() {
     </>
   );
 }
+
+
 
 
 

@@ -1,0 +1,34 @@
+
+openapi: 3.0.0
+info:
+  title: Student Apply Vacancy Service API
+  version: "1.0.0"
+  description: API documentation for the student apply vacancy microservice in the Student Management domain of UNIBRIDGE.
+servers:
+  - url: http://localhost:3020/api
+    description: Local server
+paths:
+  /apply:
+    post:
+      summary: Apply to a vacancy
+      description: Allows a student to apply for a published vacancy.
+      tags:
+        - Applications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                student_id:
+                  type: integer
+                vacancy_id:
+                  type: integer
+      responses:
+        '201':
+          description: Application created successfully
+        '400':
+          description: Invalid input data
+        '500':
+          description: Internal server error

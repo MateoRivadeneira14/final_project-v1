@@ -1,0 +1,30 @@
+
+openapi: 3.0.0
+info:
+  title: User Get Profile Service API
+  version: "1.0.0"
+  description: API documentation for the user get profile microservice in the Users domain of UNIBRIDGE.
+servers:
+  - url: http://localhost:3021
+    description: Local server
+paths:
+  /api/user/profile:
+    get:
+      summary: Get authenticated user profile
+      description: Returns the complete profile of the authenticated user, including extra fields depending on their role.
+      tags:
+        - Profile
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          description: Bearer JWT token
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response with user profile
+        '401':
+          description: Invalid or missing token
+        '500':
+          description: Internal server error

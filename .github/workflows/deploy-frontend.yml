@@ -3,7 +3,7 @@ name: Deploy Frontend to EC2
 on:
   push:
     branches:
-      - test-dockerizado
+      - test-dockerizado2
 
 jobs:
   build-and-push:

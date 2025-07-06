@@ -1,0 +1,21 @@
+
+openapi: 3.0.0
+info:
+  title: Student View Vacancies Service API
+  version: "1.0.0"
+  description: API documentation for the student view vacancies microservice in the Student Management domain of UNIBRIDGE.
+servers:
+  - url: http://localhost:5004
+    description: Local server
+paths:
+  /api/estudiante/vacancies:
+    get:
+      summary: Get available vacancies for students
+      description: Returns a list of vacancies fetched from the external vacancies microservice.
+      tags:
+        - Vacancies
+      responses:
+        '200':
+          description: Successful response with vacancy list
+        '500':
+          description: Internal server or connection error
